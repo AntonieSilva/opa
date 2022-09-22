@@ -5,3 +5,17 @@ activemq:
     - "61616:61616"
     - "61613:61613"
     - "8161:8161"
+db:
+  container_name: opa-mysql8
+  image: mysql/mysql-server:8.0
+  volumes:
+    - mysql:/var/lib/mysql
+    - mysql_config:/etc/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=pass
+    - MYSQL_DATABASE=testdb
+    - MYSQL_USER=testuser
+    - MYSQL_PASSWORD=testpassword
+  ports:
+    - "3306:3306"
+  restart: always 
